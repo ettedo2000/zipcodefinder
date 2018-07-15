@@ -1,0 +1,247 @@
+/*@import "sweetalert2/dist/sweetalert2.css";*/
+@import 'bootstrap/dist/css/bootstrap.css';
+@import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+$gap1           : 1rem;
+$gap2           : 2rem;
+$gap3           : 3rem;
+$gap4           : 4rem;
+$gap5           : 5rem;
+$bgDefault      : #f5f5f5;
+
+
+body{
+  background-repeat:repeat-x;
+  background-color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  overflow-x: hidden !important;
+}
+
+.footer-basic{
+  background-color: $bgDefault;
+  position: fixed;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #c5bfbf;
+  -webkit-box-shadow:0px 1px 1px #c5bfbf;
+  -moz-box-shadow:0px 1px 1px #c5bfbf;
+  box-shadow:1px 1px 1px 2px #c5bfbf;
+}
+
+.homeBackground{
+  min-height: 100vh;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.mainDiv{
+  margin-top: 20%;
+  margin-bottom: 7%;
+  background-color:rgba(245,245,245,1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)"; /* IE 8 */
+  filter: alpha(opacity=90); /* IE 5-7 */
+  -moz-opacity: 0.90; /* Netscape */
+  -khtml-opacity: 0.90; /* Safari 1.x */
+  opacity: 0.90; /* Good browsers */
+}
+
+.navbar{
+  z-index:1;
+  position: fixed;
+  background-color: $bgDefault;
+  padding: 0 0 1rem 0;
+  border-bottom: 1px solid #c5bfbf;
+  -webkit-box-shadow:0px 1px 1px #c5bfbf;
+  -moz-box-shadow:0px 1px 1px #c5bfbf;
+  box-shadow:0px 1px 1px #c5bfbf;
+}
+
+.navbar-brand{
+  padding: 0;
+  margin: 0 0 0 0;
+}
+
+.button1{
+  color: #ffffff;
+  background-color: #7B1711;
+}
+
+.text-align-l{
+  text-align: left;
+}
+
+.text-align-r{
+  text-align: right;
+}
+
+.text-align-c{
+  text-align: center;
+}
+
+.top-marg{
+  margin-top: $gap1;
+}
+
+.button-marg{
+  margin-bottom: $gap1;
+}
+
+.top-pad{
+  padding-top: $gap2;
+}
+
+.button-pad{
+  padding-bottom: $gap2;
+}
+
+.nav-link:hover {
+  color:#7B1711;
+  text-decoration:none;
+}
+
+.nav-link{
+  margin-right: 20px;
+  font-weight: bold;
+  color:#000000;
+}
+
+#nav_collapse{
+  float: right;
+  margin-top: 6%;
+}
+
+#navbar-brand{
+  width: 30%;
+}
+
+.whatsThisLink{
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size:12px;
+  color: blue;
+  text-decoration:underline;
+  cursor: default;
+  float: right;
+}
+
+span{
+  color:#000000;
+}
+
+hr{
+  /* border-top-color: #c5bfbf*/
+  -webkit-box-shadow:0px 1px 1px #c5bfbf;
+  -moz-box-shadow:0px 1px 1px #c5bfbf;
+  box-shadow:0px 1px 1px #c5bfbf;
+}
+
+span:hover{
+  color:#7B1711;
+}
+
+.addressInfo{
+  font-family:Georgia, "Times New Roman", Times, serif;
+  font-size: 14px;
+  text-align:right;
+  float: right;
+  text-align:right;
+}
+
+.countyInfo{
+  float: left;
+  padding-top: 1rem;
+}
+
+.countyName{
+  font-size: 22px;
+}
+
+.countyListDiv{
+  padding-top: 2rem;
+}
+.Light{
+  padding-top: 10%;
+}
+.countyInfoImg{
+  width: 134px;
+  height: 145px;
+}
+.error{
+  color: red;
+}
+
+/*media setup*/
+@media only screen and (max-width: 1200px) {
+  .countyName{
+    font-size: 20px;
+  }
+  .countyInfoImg{
+    width: 100px;
+    height: 110px;
+  }
+  .addressInfo{
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size: 11px;
+    text-align:right;
+    float: right;
+    text-align:right;
+  }
+  .mainDiv{
+    margin-top: 25%;
+    margin-bottom: 30%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .mainDiv{
+    margin-top: 50%;
+    margin-bottom: 30%;
+  }
+  .navbar-toggler {
+    float: right;
+    margin: 1% 0 1% 0;
+  }
+  #navbar-brand{
+    width: 50%;
+  }
+  .Light{
+    padding-top: 20%;
+  }
+  #margText{
+    font-size: xx-small;
+    margin: 0 5px 0 5px;
+    font-weight: bolder;
+  }
+  .feedbackImg{
+    width: 100%;
+  }
+  #contactLink{
+    width: 6%;
+  }
+  .countyInfoImg{
+    width: 90px;
+    height: 100px;
+  }
+  .addressInfo{
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size: 11px;
+    text-align:right;
+    float: right;
+  }
+  .countyName{
+    font-size: 16px;
+  }
+  .countyListDiv{
+    padding-top: 0;
+  }
+  .countyInfo{
+    padding-top: 0;
+  }
+}
+
+/*end of new stuff*/
+
