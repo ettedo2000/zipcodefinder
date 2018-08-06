@@ -49,9 +49,9 @@
 </template>
 
 <script>
-    export default {
-        name: ''
-    }
+export default {
+  name: ''
+}
 </script>
 
 <style>

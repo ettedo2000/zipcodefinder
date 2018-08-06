@@ -51,45 +51,45 @@
 </template>
 
 <script>
-    //import swal from 'sweetalert2'
-    import axios from 'axios'
-    import {mapGetters} from 'vuex'
+// import swal from 'sweetalert2'
+import axios from 'axios'
+import {mapGetters} from 'vuex'
 
-    export default {
-        name: 'home',
-        data () {
-            return {
-                selected: '',
-                info: null
-            }
-        },
-        mounted () {
-            axios.get(this.apiUrl + 'setup/index.php', {
-                params: {
-                    main: true
-                }
-            }).then(response => {
-                (this.info = response.data)
-            }).catch((e) => {
-                console.log(e)
-            })
-        },
-        methods: {
-            updateValue(event) {
-                console.log(this.selected)
-                this.$store.state.stateID = this.selected
-                this.$store.dispatch('updatedValue', this.selected)
-                this.$router.push({
-                    name: 'countyServiceList'
-                })
-            }
-        },
-        computed: {
-            stateID () {
-                return this.$store.store.stateID
-            }
-        }
+export default {
+  name: 'home',
+  data () {
+    return {
+      selected: '',
+      info: null
     }
+  },
+  mounted () {
+    axios.get(this.apiUrl + 'setup/index.php', {
+      params: {
+        main: true
+      }
+    }).then(response => {
+      (this.info = response.data)
+    }).catch((e) => {
+      console.log(e)
+    })
+  },
+  methods: {
+    updateValue (event) {
+      console.log(this.selected)
+      this.$store.state.stateID = this.selected
+      this.$store.dispatch('updatedValue', this.selected)
+      this.$router.push({
+        name: 'countyServiceList'
+      })
+    }
+  },
+  computed: {
+    stateID () {
+      return this.$store.store.stateID
+    }
+  }
+}
 
 </script>
 @import './style/main.scss';
