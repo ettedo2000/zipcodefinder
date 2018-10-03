@@ -18,6 +18,6 @@
     }
 </script>
 
-<style>
- /* @import './style/main.scss';*/
+<style lang="scss">
+
 </style>

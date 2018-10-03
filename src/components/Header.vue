@@ -1,51 +1,39 @@
 <template>
-    <!-- Navigation -->
-    <div class="row">
-        <b-navbar toggleable="md" type="light">
-            <div class="col-1"></div>
-            <div class="col-10">
-                <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-                <b-navbar-brand href="" id="navbar-brand">
-                </b-navbar-brand>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <b-collapse is-nav id="nav_collapse">
-                    <ul class="navbar-nav navbar-nav-media">
-                        <b-nav-item-dropdown text="Motor Vehicle">
-                            <b-dropdown-item><router-link to="/countyIndex/countyServiceList">Page 1</router-link></b-dropdown-item>
-                            <b-dropdown-item><router-link to="/Page2">Page 2</router-link></b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-2</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-3</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                        <b-nav-item-dropdown text="Licenses">
-                            <b-dropdown-item href="#">Page 1-1</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-2</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-3</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                        <b-nav-item-dropdown text="Taxes">
-                            <b-dropdown-item href="#">Page 1-1</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-2</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-3</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                        <b-nav-item-dropdown text="Forms">
-                            <b-dropdown-item href="#">Page 1-1</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-2</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-3</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                        <b-nav-item-dropdown text="Other">
-                            <b-dropdown-item href="#">Page 1-1</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-2</b-dropdown-item>
-                            <b-dropdown-item href="#">Page 1-3</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                        <li class="dropdown">
-                            <button type="button" href="#" class="btn button1">Renewal Status </button>
-
-                        </li>
-                    </ul>
-                </b-collapse>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
-            <div class="col-1"></div>
-        </b-navbar>
-    </div>
+        </nav>
 </template>
 
 <script>

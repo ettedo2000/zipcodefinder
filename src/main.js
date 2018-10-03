@@ -5,17 +5,18 @@ import App from './App'
 import router from './router'
 //import {store} from './store/store'
 
+import '@/style/main.scss'
 
 require('es6-promise').polyfill()
 
 Vue.config.productionTip = false
 
 
-/* eslint-disable no-new */
+/* eslint-disable */
 new Vue({
     el: '#app',
     router,
-    store,
+    //store,
     components: { App },
     template: '<App/>'
 })
