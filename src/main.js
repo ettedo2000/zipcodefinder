@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-//import {store} from './store/store'
+// import {store} from './store/store'
 
 import '@/style/main.scss'
 
@@ -11,14 +11,12 @@ require('es6-promise').polyfill()
 
 Vue.config.productionTip = false
 
-
-/* eslint-disable */
 new Vue({
-    el: '#app',
-    router,
-    //store,
-    components: { App },
-    template: '<App/>'
+  el: '#app',
+  router,
+  // store,
+  components: { App },
+  template: '<App/>'
 })
 
 Vue.config.devtools = true

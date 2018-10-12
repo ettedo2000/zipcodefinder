@@ -175,6 +175,11 @@ span:hover{
   color: red;
 }
 
+.mainTitle{
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
 /*media setup*/
 @media only screen and (max-width: 1200px) {
   .countyName{
@@ -192,7 +197,7 @@ span:hover{
     text-align:right;
   }
   .mainDiv{
-    margin-top: 25%;
+    margin-top: 28%;
     margin-bottom: 30%;
   }
 }
@@ -240,6 +245,10 @@ span:hover{
   }
   .countyInfo{
     padding-top: 0;
+  }
+
+  .mainTitle{
+    margin-bottom: 1rem
   }
 }
 
