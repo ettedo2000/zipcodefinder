@@ -1,6 +1,6 @@
 <template>
     <!-- Page Content -->
-    <div class="container" :style="{ backgroundImage: 'url(' + require('@/assets/full-bloom.png') + ')'}">
+    <div class="container">
         <div class="mainDiv">
             <div class="row">
                 <div class="col-12">
@@ -13,12 +13,29 @@
                 <div class="col-md mb-4">
                     <span class="indexHeader">Please Select a County:</span>
                     <br />
-                    <select v-model="selected" class="indexSelectBox form-control" name="countylist" v-on:change="updateValue">
+                    <select v-model="selected" class="indexSelectBox form-control" name="countylist" v-on:change="updateValue();updatedLinks();">
                         <option disabled value="" selected >Please choose a county</option>
-                        <option v-for="(item, key) in info" v-bind:value="key"> {{ item }}
+                        <option v-for="(item, key) in info" v-bind:value="item"> {{ item }}
                         </option>
                     </select>
                     <h1 v-if="selected != ''">{{ selected }}</h1>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-md mb-4" id="linkList" v-if="selected != ''">
+                    <select v-model="selectcity" class="indexSelectBox form-control" name="citylist" v-on:change="updateCity()">
+                        <option disabled value="" selected >Please choose a city</option>
+                        <option v-for="i in links" v-if="i.state == selected">
+                            {{ i.city }}
+                        </option>
+                    </select>
+                    <!--<h1 v-if="selected != ''">{{ selected }}</h1>-->
+                    <!--<ul v-for="i in links">-->
+                        <!--<li v-if="i.state == selected"> {{ i.city }}  </li>-->
+                    <!--</ul>-->
                 </div>
                 <div class="col"></div>
             </div>
@@ -37,6 +54,7 @@ export default {
   data () {
     return {
       selected: '',
+      selectcity: '',
       info:
         {
           'AL': 'Alabama',
@@ -93,36 +111,42 @@ export default {
     }
   },
   mounted () {
-    axios.get(this.apiUrl + this.selected + '&jsoncallback=?', {
-      params: {
-        main: true
-      }
-    }).then(response => {
-      (this.info = response.data)
-    }).catch((e) => {
-      console.log(e)
-    })
+    // axios.get(this.apiUrl + this.selected + '&jsoncallback=?', {
+    //   params: {
+    //     main: true
+    //   }
+    // }).then(response => {
+    //   (this.info = response.data)
+    // }).catch((e) => {
+    //   console.log(e)
+    // })
   },
   methods: {
     updateValue (event) {
       console.log(this.selected)
       this.$store.state.stateID = this.selected
-
-      // this.$store.dispatch('updatedValue', this.selected)
+      this.$store.dispatch('updatedValue', this.selected)
       // this.$router.push({
       //   name: 'countyServiceList'
       // })
+    },
+    updatedLinks () {
+      this.$store.dispatch('updatedLinks')
     }
   },
   computed: {
     stateID () {
       return this.$store.store.stateID
+    },
+    links () {
+        console.log(this.$store.getters.getLink)
+      return this.$store.getters.getLink
     }
   }
 }
 
 </script>
-import './style/main.scss';
+@import './style/main.scss';
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">

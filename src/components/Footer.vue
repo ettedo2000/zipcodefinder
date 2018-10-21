@@ -1,6 +1,6 @@
 <template>
     <!-- Footer -->
-    <footer class="footer-basic font-small blue pt-4">
+    <footer class="footer-basic">
 
         <!-- Footer Links -->
         <div class="container-fluid text-center text-md-left">
@@ -33,12 +33,6 @@
                         <li>
                             <a href="#!">Link 2</a>
                         </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
                     </ul>
 
                 </div>
@@ -56,12 +50,6 @@
                         </li>
                         <li>
                             <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
                         </li>
                     </ul>
 

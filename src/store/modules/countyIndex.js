@@ -1,4 +1,5 @@
 import axios from 'axios/index'
+var apiUrl = 'https://api.census.gov/data/2017/acs/acs1?get=NAME,group(B01001)&for=us:1'
 
 export const countyIndex = {
   state: {
@@ -69,16 +70,18 @@ export const countyIndex = {
     },
     /* get all service Links from county */
     updatedLinks ({commit}, payload) {
-      axios.get(apiUrl + 'setup/index.php', {
-        params: {
-          countySelected: this.state.stateID
-        }
+      console.log(this.state.stateID + ' test')
+      axios.get('static/city.json' , {
+        // params: {
+        //   countySelected: this.state.stateID
+        // }
       })
         .then(response => {
           commit('updatedLinks', response.data)
         }).catch((e) => {
           console.log(e)
         })
+
     }
   }
 }
