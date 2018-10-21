@@ -1,48 +1,24 @@
 <template>
     <!-- Page Content -->
-    <div class="homeBackground">
-        <div class="container">
-            <div id='MicrosoftTranslatorWidget' class='Light' translate="no" style='color:white;background-color:#555555;position: absolute;'></div>
+    <div class="container" :style="{ backgroundImage: 'url(' + require('@/assets/full-bloom.png') + ')'}">
+        <div class="mainDiv">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="mainTitle">Welcome to ZipCode Finder<br/>
+                    <span style="font-size: medium;font-style: italic">Select state and city to get zip codes for that region.</span></h4>
+                </div>
+            </div>
             <div class="row">
                 <div class="col"></div>
-                <div class="col-10 text-center">
-                    <div class="mainDiv">
-                        <div class="top-pad button-pad">
-                            <h4 class="mainTitle">Welcome to the new TNCountyClerk.com<br/>
-                                Offering online payment and information lookup for your county clerk office.</h4>
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col-md mb-4">
-                                    <span class="indexHeader">Please Select a County:</span>
-                                    <br />
-                                    <select v-model="selected" class="indexSelectBox form-control" name="countylist" v-on:change="updateValue">
-                                        <option disabled value="" selected >Please choose a county</option>
-                                        <option v-for="(item, key) in info" v-bind:value="key"> {{ item }}
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col"></div>
-                            </div>
-                            <div class="noMarginImage button-marg" style="font-weight: bold">OR</div>
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col-md">
-                                    <span class="indexHeader">Renew Your License Plate</span>
-                                    <br />
-                                    <div class="input-group mb-3">
-                                        <input name="plateNumber" type="text" autocomplete="off" class="indexSelectBox form-control" value="Please Enter Plate Number..." >
-                                        <div class="input-group-append">
-                                        <img src="@/assets/thumbnails/acid_rain_thumb.jpg" align="middle" style="position:relative;margin-left: 1rem; cursor:pointer;" onclick="document.expressRenew.submit()">
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="col"></div>
-                            </div>
-                            <div class="row">
-                                <p id="margText" >Disclaimer: We,Business Information System (BIS), are a private (for profit) business that operates under contract with your local county government to provide various software solutions including but not limited to online services.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md mb-4">
+                    <span class="indexHeader">Please Select a County:</span>
+                    <br />
+                    <select v-model="selected" class="indexSelectBox form-control" name="countylist" v-on:change="updateValue">
+                        <option disabled value="" selected >Please choose a county</option>
+                        <option v-for="(item, key) in info" v-bind:value="key"> {{ item }}
+                        </option>
+                    </select>
+                    <h1 v-if="selected != ''">{{ selected }}</h1>
                 </div>
                 <div class="col"></div>
             </div>
@@ -53,18 +29,71 @@
 <script>
 // import swal from 'sweetalert2'
 import axios from 'axios'
-import {mapGetters} from 'vuex'
+// import {mapGetters} from 'vuex'
 
 export default {
   name: 'home',
+  api: 'http://gomashup.com/json.php?fds=geo/usa/zipcode/state/',
   data () {
     return {
       selected: '',
-      info: null
+      info:
+        {
+          'AL': 'Alabama',
+          'AK': 'Alaska',
+          'AZ': 'Arizona',
+          'AR': 'Arkansas',
+          'CA': 'California',
+          'CO': 'Colorado',
+          'CT': 'Connecticut',
+          'DE': 'Delaware',
+          'FL': 'Florida',
+          'GA': 'Georgia',
+          'HI': 'Hawaii',
+          'ID': 'Idaho',
+          'IL': 'Illinois',
+          'IN': 'Indiana',
+          'IA': 'Iowa',
+          'KS': 'Kansas',
+          'KY': 'Kentucky',
+          'LA': 'Louisiana',
+          'ME': 'Maine',
+          'MD': 'Maryland',
+          'MA': 'Massachusetts',
+          'MI': 'Michigan',
+          'MN': 'Minnesota',
+          'MS': 'Mississippi',
+          'MO': 'Missouri',
+          'MT': 'Montana',
+          'NE': 'Nebraska',
+          'NV': 'Nevada',
+          'NH': 'New Hampshire',
+          'NJ': 'New Jersey',
+          'NM': 'New Mexico',
+          'NY': 'New York',
+          'NC': 'North Carolina',
+          'ND': 'North Dakota',
+          'OH': 'Ohio',
+          'OK': 'Oklahoma',
+          'OR': 'Oregon',
+          'PA': 'Pennsylvania',
+          'RI': 'Rhode Island',
+          'SC': 'South Carolina',
+          'SD': 'South Dakota',
+          'TN': 'Tennessee',
+          'TX': 'Texas',
+          'UT': 'Utah',
+          'VT': 'Vermont',
+          'VA': 'Virginia',
+          'WA': 'Washington',
+          'WV': 'West Virginia',
+          'WI': 'Wisconsin',
+          'WY': 'Wyoming'
+        }
     }
   },
   mounted () {
-    axios.get(this.apiUrl + 'setup/index.php', {
+    axios.get(this.apiUrl + this.selected + '&jsoncallback=?', {
       params: {
         main: true
       }
@@ -78,10 +107,11 @@ export default {
     updateValue (event) {
       console.log(this.selected)
       this.$store.state.stateID = this.selected
-      this.$store.dispatch('updatedValue', this.selected)
-      this.$router.push({
-        name: 'countyServiceList'
-      })
+
+      // this.$store.dispatch('updatedValue', this.selected)
+      // this.$router.push({
+      //   name: 'countyServiceList'
+      // })
     }
   },
   computed: {
@@ -92,10 +122,12 @@ export default {
 }
 
 </script>
-@import './style/main.scss';
+import './style/main.scss';
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss">
+    @import '../style/main.scss';
+
     #contactLink {
         float: right;
         position: fixed;
@@ -106,16 +138,10 @@ export default {
     #margText{
         padding: 4% 4% 0 4%;
     }
-    .mainTitle{
-        margin-bottom: 4rem
-    }
     @media only screen and (max-width: 1000px) {
         h4{
             font-size: .75rem;
             font-weight: bold;
-        }
-        .mainTitle{
-            margin-bottom: 1rem
         }
         .indexSelectBox{
             font-size: small;
