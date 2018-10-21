@@ -1,21 +1,87 @@
 <template>
-    <div class="footer-basic navbar-fixed-bottom">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-5"><div style="text-align: left">
+    <!-- Footer -->
+    <footer class="footer-basic font-small blue pt-4">
 
-                2018 Business Information
-            </div></div>
-            <div class="col-5"><div style="text-align: right">
-                <img src="@/assets/thumbnails/acid_rain_thumb.jpg" />
-                <img src="@/assets/thumbnails/atlantic_ice_thumb.jpg" />
-                <img src="@/assets/thumbnails/copper_funnel_thumb.jpg" />
-                <img src="@/assets/thumbnails/electric_virus_raw1_thumb.jpg" />
-            </div></div>
-            <div class="col"></div>
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase">Footer Content</h5>
+                    <p>Here you can use rows and columns here to organize your footer content.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
         </div>
-    </div>
+        <!-- Footer Links -->
 
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="#"> BusinessName</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 </template>
 
 <script>
