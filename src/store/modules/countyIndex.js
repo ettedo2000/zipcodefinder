@@ -6,7 +6,9 @@ export const countyIndex = {
     stateID: 0,
     stateList: [], /* set default value for State List */
     countyList: [],
-    link: []
+    link: [],
+    zipCodeValue: '',
+    zipCodes: []
   },
   getters: {
     stateID: state => {
@@ -20,6 +22,12 @@ export const countyIndex = {
     },
     getLink: state => {
       return state.link
+    },
+    zipCodeValue: state => {
+      return state.zipCodeValue
+    },
+    zipCode: state => {
+        return state.zipCodes
     }
   },
   mutations: {
@@ -34,6 +42,9 @@ export const countyIndex = {
     },
     updatedLinks: (state, payload) => {
       state.link = payload
+    },
+    updatedZipCodeValue: (state, payload) => {
+      state.zipCodeValue = payload
     }
   },
   actions: {
@@ -71,7 +82,7 @@ export const countyIndex = {
     /* get all service Links from county */
     updatedLinks ({commit}, payload) {
       console.log(this.state.stateID + ' test')
-      axios.get('static/city.json' , {
+      axios.get('static/city.json', {
         // params: {
         //   countySelected: this.state.stateID
         // }
@@ -81,7 +92,27 @@ export const countyIndex = {
         }).catch((e) => {
           console.log(e)
         })
-
+    },
+    updatedZipCodeValue ({commit}, payload) {
+      console.log(this.state.zipCodeValue)
+      console.log(this.state.zipCodeValue.split(':'))
+      let zipValue = this.state.zipCodeValue.split(':')
+      fetch('https://www.zipcodeapi.com/rest/HtrFuIlesbl1A81SQzUmWteR2ow6LOr27opX2BsvuXVT7EvaVoCnho4ca8xeCaN9/city-zips.json/' + zipValue[0] + '/' + zipValue[1])
+      .then(response => {
+              console.log(response.json())
+              commit('updatezipCodeValue', response.json())
+            }).catch((e) => {
+              console.log(e)
+            })
+      // let zipValue = this.state.zipCodeValue.split(':')
+      // axios.get('https://www.zipcodeapi.com/rest/HtrFuIlesbl1A81SQzUmWteR2ow6LOr27opX2BsvuXVT7EvaVoCnho4ca8xeCaN9/city-zips.json/' + zipValue[0] + '/' + zipValue[1],
+      //   {})
+      //   .then(response => {
+      //     console.log(response.data)
+      //     commit('updatezipCodeValue', response.data)
+      //   }).catch((e) => {
+      //     console.log(e)
+      //   })
     }
   }
 }

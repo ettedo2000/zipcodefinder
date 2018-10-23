@@ -28,8 +28,8 @@
                 <div class="col-md mb-4" id="linkList" v-if="selected != ''">
                     <select v-model="selectcity" class="indexSelectBox form-control" name="citylist" v-on:change="updateCity()">
                         <option disabled value="" selected >Please choose a city</option>
-                        <option v-for="i in links" v-if="i.state == selected">
-                            {{ i.city }}
+                        <option v-for="(item, key) in links" v-bind:value="item.city+':'+item.st" v-if="item.state == selected">
+                            {{ item.city }}
                         </option>
                     </select>
                     <!--<h1 v-if="selected != ''">{{ selected }}</h1>-->
@@ -39,6 +39,7 @@
                 </div>
                 <div class="col"></div>
             </div>
+            <span v-for="i in zipCode" >{{ i }}</span>
         </div>
     </div>
 </template>
@@ -132,6 +133,11 @@ export default {
     },
     updatedLinks () {
       this.$store.dispatch('updatedLinks')
+    },
+    updateCity () {
+      console.log(this.selected)
+      this.$store.state.zipCodeValue = this.selectcity
+      this.$store.dispatch('updatedZipCodeValue', this.selectcity)
     }
   },
   computed: {
@@ -139,8 +145,12 @@ export default {
       return this.$store.store.stateID
     },
     links () {
-        console.log(this.$store.getters.getLink)
+      console.log(this.$store.getters.getLink)
       return this.$store.getters.getLink
+    },
+    zipCode  () {
+      console.log(this.$store.getters.zipCodeValue+ ' ==== ')
+      return this.$store.getters.zipCodeValue
     }
   }
 }
