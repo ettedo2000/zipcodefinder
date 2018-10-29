@@ -1,7 +1,10 @@
 # zipcodefinder
 
-> A Vue.js project that will Implement vuex, store, bootstrap, scss as well as PHP.
->This page will offer a dropdown of state, and city to get corresponding Zipcodes.
+> A Vue.js project that is implementing vuex, vue store, bootstrap, api axios, scss as well as PHP.
+>This page will offer a dropdown of state, and cities to get a return of zipcodes from a api.
+
+###### Third party Api used for zip code
+>https://www.zipcodeapi.com/API
 
 ## Build Setup
 
