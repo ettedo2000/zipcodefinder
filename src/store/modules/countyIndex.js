@@ -1,5 +1,5 @@
 import axios from 'axios/index'
-var apiUrl = 'https://api.census.gov/data/2017/acs/acs1?get=NAME,group(B01001)&for=us:1'
+var apiUrl = window.location.hostname === 'localhost' ? 'http://www.test3.bisonline.com/~odette.simons/vueProjects/zipcodefinder/static/' : 'static/'
 
 export const countyIndex = {
   state: {
@@ -26,8 +26,8 @@ export const countyIndex = {
     zipCodeValue: state => {
       return state.zipCodeValue
     },
-    zipCode: state => {
-        return state.zipCodes
+    getzipCodes: state => {
+      return state.zipCodes
     }
   },
   mutations: {
@@ -45,6 +45,9 @@ export const countyIndex = {
     },
     updatedZipCodeValue: (state, payload) => {
       state.zipCodeValue = payload
+    },
+    updateZipCodes: (state, payload) => {
+      state.zipCodes = payload
     }
   },
   actions: {
@@ -81,7 +84,7 @@ export const countyIndex = {
     },
     /* get all service Links from county */
     updatedLinks ({commit}, payload) {
-      console.log(this.state.stateID + ' test')
+      console.log(this.state.stateID + '  store state')
       axios.get('static/city.json', {
         // params: {
         //   countySelected: this.state.stateID
@@ -94,25 +97,32 @@ export const countyIndex = {
         })
     },
     updatedZipCodeValue ({commit}, payload) {
-      console.log(this.state.zipCodeValue)
+      commit('updatedZipCodeValue', payload)
+    },
+    updateZipCodes ({commit}, payload) {
+      console.log(this.state.zipCodeValue + '  store state and city')
       console.log(this.state.zipCodeValue.split(':'))
       let zipValue = this.state.zipCodeValue.split(':')
-      fetch('https://www.zipcodeapi.com/rest/HtrFuIlesbl1A81SQzUmWteR2ow6LOr27opX2BsvuXVT7EvaVoCnho4ca8xeCaN9/city-zips.json/' + zipValue[0] + '/' + zipValue[1])
-      .then(response => {
-              console.log(response.json())
-              commit('updatezipCodeValue', response.json())
-            }).catch((e) => {
-              console.log(e)
-            })
-      // let zipValue = this.state.zipCodeValue.split(':')
-      // axios.get('https://www.zipcodeapi.com/rest/HtrFuIlesbl1A81SQzUmWteR2ow6LOr27opX2BsvuXVT7EvaVoCnho4ca8xeCaN9/city-zips.json/' + zipValue[0] + '/' + zipValue[1],
-      //   {})
-      //   .then(response => {
-      //     console.log(response.data)
-      //     commit('updatezipCodeValue', response.data)
-      //   }).catch((e) => {
-      //     console.log(e)
-      //   })
+      axios.get(apiUrl + 'getZipcode.php', {
+        params: {
+          zipCode: true,
+          city: zipValue[0],
+          state: zipValue[1]
+        }
+      }).then(response => {
+        console.log(response)
+        commit('updateZipCodes', response.data)
+      }).catch((e) => {
+        console.log(e)
+      })
+
+      // axios.get('https://www.zipcodeapi.com/rest/HtrFuIlesbl1A81SQzUmWteR2ow6LOr27opX2BsvuXVT7EvaVoCnho4ca8xeCaN9/city-zips.json/' + zipValue[0] + '/' + zipValue[1])
+      // .then(response => {
+      //         console.log(response.data + '  json responds')
+      //         commit('updateZipCodes', response.data)
+      //       }).catch((e) => {
+      //         console.log(e)
+      //       })
     }
   }
 }

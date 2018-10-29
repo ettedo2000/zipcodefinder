@@ -26,21 +26,26 @@
                 <div class="col">
                 </div>
                 <div class="col-md mb-4" id="linkList" v-if="selected != ''">
-                    <select v-model="selectcity" class="indexSelectBox form-control" name="citylist" v-on:change="updateCity()">
+                    <select v-model="selectcity" class="indexSelectBox form-control" name="citylist" v-on:change="updateCity();updateZipCodes()">
                         <option disabled value="" selected >Please choose a city</option>
                         <option v-for="(item, key) in links" v-bind:value="item.city+':'+item.st" v-if="item.state == selected">
                             {{ item.city }}
                         </option>
                     </select>
-                    <!--<h1 v-if="selected != ''">{{ selected }}</h1>-->
-                    <!--<ul v-for="i in links">-->
-                        <!--<li v-if="i.state == selected"> {{ i.city }}  </li>-->
-                    <!--</ul>-->
                 </div>
                 <div class="col"></div>
             </div>
-            <span v-for="i in zipCode" >{{ i }}</span>
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-md mb-4">
+                <span v-if="selected != ''">{{ zipCodes }}</span>
+                </div>
+                <div class="col">
+                </div>
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -124,7 +129,7 @@ export default {
   },
   methods: {
     updateValue (event) {
-      console.log(this.selected)
+      console.log(this.selected + '  state')
       this.$store.state.stateID = this.selected
       this.$store.dispatch('updatedValue', this.selected)
       // this.$router.push({
@@ -135,9 +140,12 @@ export default {
       this.$store.dispatch('updatedLinks')
     },
     updateCity () {
-      console.log(this.selected)
+      console.log(this.selectcity + '  city and state')
       this.$store.state.zipCodeValue = this.selectcity
       this.$store.dispatch('updatedZipCodeValue', this.selectcity)
+    },
+    updateZipCodes () {
+      this.$store.dispatch('updateZipCodes')
     }
   },
   computed: {
@@ -148,9 +156,9 @@ export default {
       console.log(this.$store.getters.getLink)
       return this.$store.getters.getLink
     },
-    zipCode  () {
-      console.log(this.$store.getters.zipCodeValue+ ' ==== ')
-      return this.$store.getters.zipCodeValue
+    zipCodes  () {
+      console.log(this.$store.getters.getzipCodes + ' ==== ')
+      return this.$store.getters.getzipCodes
     }
   }
 }
